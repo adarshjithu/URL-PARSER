@@ -16,7 +16,7 @@ const jwt_1 = require("@nestjs/jwt");
 const url_middleware_1 = require("./url.middleware");
 let UrlModule = class UrlModule {
     configure(consumer) {
-        consumer.apply(url_middleware_1.UrlMiddleware).forRoutes('url');
+        consumer.apply(url_middleware_1.UrlMiddleware).forRoutes('');
     }
 };
 exports.UrlModule = UrlModule;

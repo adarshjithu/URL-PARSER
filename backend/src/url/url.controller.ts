@@ -28,6 +28,7 @@ export class UrlController {
 
   @Get()
   async getUserUrls(@Req() req: Request) {
+    console.log(req.userId)
     return await this.urlService.findUrlsById(req.userId);
   }
   @Delete()

@@ -12,7 +12,7 @@ const jwt = require("jsonwebtoken");
 let UrlMiddleware = class UrlMiddleware {
     async use(req, Response, next) {
         try {
-            if (req.originalUrl.split("/").length > 2) {
+            if (req.originalUrl.split("/").length > 1) {
                 return next();
             }
             const token = req.headers['authorization'];

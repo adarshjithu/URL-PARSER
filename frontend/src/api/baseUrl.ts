@@ -1,6 +1,7 @@
 import axios from "axios";
 
 //http://localhost:3000
+//https://www.myarticle.shop
 export const axiosInstance = axios.create({
     baseURL: "https://www.myarticle.shop",
     headers: {

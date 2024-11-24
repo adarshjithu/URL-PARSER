@@ -18,7 +18,7 @@ import { UrlMiddleware } from './url.middleware';
 })
 export class UrlModule implements NestModule {
  configure(consumer: MiddlewareConsumer) {
-   consumer.apply(UrlMiddleware).forRoutes('url')
+   consumer.apply(UrlMiddleware).forRoutes('')
  }
 
 }

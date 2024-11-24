@@ -56,6 +56,7 @@ export class UrlService {
   }
 
   async findUrlsById(userId: string): Promise<Partial<IUrl>[]> {
+    console.log(userId)
     const res = await this.urlModel.find({ userId });
     return res;
   }

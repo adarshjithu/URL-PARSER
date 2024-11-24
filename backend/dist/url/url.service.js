@@ -53,6 +53,7 @@ let UrlService = class UrlService {
         }
     }
     async findUrlsById(userId) {
+        console.log(userId);
         const res = await this.urlModel.find({ userId });
         return res;
     }

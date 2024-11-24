@@ -33,6 +33,7 @@ let UrlController = class UrlController {
         }
     }
     async getUserUrls(req) {
+        console.log(req.userId);
         return await this.urlService.findUrlsById(req.userId);
     }
     async deleteUrl(url) {
