@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const axiosInstance = axios.create({
-    baseURL: "https://myarticles.shop",
+    baseURL: "https://www.myarticle.shop",
     headers: {
         "Content-Type": "application/json",
     },
