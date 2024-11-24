@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../app/store";
 import { setUserCredential } from "../app/authSlice";
+import Loading from "../Components/Loading";
 
 export default function Component() {
     const [loginData, setLoginData] = useState({ email: "", password: "" });
@@ -13,6 +14,7 @@ export default function Component() {
     const user = useSelector((data:IRootState)=>data?.auth?.userInfo)
     const dispatch = useDispatch()
     const [isTest,setIsTest] = useState(false)
+    const [loading,setLoading] = useState(false)
     const [testCredential,setTestCredential] = useState({email:'adarshjithu10@gmail.com',password:"123456"})
     
 
@@ -20,8 +22,9 @@ export default function Component() {
         e.preventDefault();
         
         try {
+            setLoading(true)
             const res = await useLogin(isTest?testCredential:loginData);
-         
+            setLoading(false)
             if(res?.data?.success){
                 toast.success(res?.data?.message);
                 localStorage.setItem("url-parser-token",res?.data?.token)
@@ -30,6 +33,7 @@ export default function Component() {
             }
         } catch (error: any) {
             toast.error(error?.response?.data?.message);
+            setLoading(false)
         }
     };
 
@@ -104,7 +108,12 @@ export default function Component() {
                                     type="submit"
                                     className="w-full px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-colors"
                                 >
-                                    Login
+                                    {loading?
+                                    <div className="w-full flex flex-row justify-center">
+
+                                        <Loading/>
+                                    </div>
+                                    :'Login'}
                                 </button>
                                 <button
                                    
@@ -134,10 +143,10 @@ export default function Component() {
                     <p className="text-sm text-gray-500 dark:text-gray-400">© 2024 URL Wizard. All rights reserved.</p>
                     <nav className="flex gap-4 sm:gap-6">
                         <a className="text-sm hover:text-purple-600 dark:hover:text-purple-400 transition-colors" href="#privacy">
-                            Privacy Spell
+                       
                         </a>
                         <a className="text-sm hover:text-purple-600 dark:hover:text-purple-400 transition-colors" href="#terms">
-                            Terms of Wizardry
+                           
                         </a>
                     </nav>
                 </div>

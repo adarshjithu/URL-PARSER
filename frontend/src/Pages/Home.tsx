@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { logoutUser } from "../app/authSlice";
 import toast from "react-hot-toast";
 import { createShortUrl } from "../api/urlServices";
+import Loading from "../Components/Loading";
 
 interface ParsedURL {
     protocol: string;
@@ -22,6 +23,7 @@ export default function HomePage() {
     const user = useSelector((data: IRootState) => data?.auth?.userInfo);
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const [loading,setLoading] = useState<boolean>(false)
 
     const parseURL = () => {
         try {
@@ -34,15 +36,18 @@ export default function HomePage() {
     };
 
     const submitUrl = async () => {
+        setLoading(true)
         setParsedURL(null)
         if (parseURL()) {
             try {
                 const res = await createShortUrl(url);
                 setParsedURL(res?.data?.shortUrl);
+                setLoading(false)
                
                 toast.success(res?.data?.shortUrl)
             } catch (error: any) {
                 toast.error(error?.response?.data?.message);
+                setLoading(false)
             }
         }
     };
@@ -62,15 +67,15 @@ export default function HomePage() {
                     <span className="font-bold text-xl text-purple-600 dark:text-purple-400">URL Wizard</span>
                 </a>
                 <nav className="ml-auto flex gap-4 sm:gap-6">
-                    <h1 className=" cursor-pointer text-sm font-medium hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
-                        {user?.username[0].toUpperCase() + user?.username.slice(1)}
+                    <h1 className=" cursor-pointer text-sm font-lg hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
+                        {user?.username.toUpperCase()}
                     </h1>
-                    <h1 onClick={()=>navigate('/list')} className="cursor-pointer text-sm font-medium hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
-                       My Short URLS
+                    <h1 onClick={()=>navigate('/list')} className="cursor-pointer text-sm font-lg hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
+                      MY URLS
                     </h1>
-                    <a className=" cursor-pointer text-sm font-medium hover:text-purple-600 dark:hover:text-purple-400 transition-colors" onClick={()=>navigate("/")}>Home</a>
-                    <a onClick={logout} className= " cursor-pointer text-sm font-medium hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
-                        Logout
+                    <a className=" cursor-pointer text-sm font-medium hover:text-purple-600 dark:hover:text-purple-400 transition-colors" onClick={()=>navigate("/")}>HOME</a>
+                    <a onClick={logout} className= " cursor-pointer text-sm font-lg hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
+                       LOGOUT
                     </a>
                 </nav>
             </header>
@@ -105,7 +110,7 @@ export default function HomePage() {
                                         onClick={submitUrl}
                                         className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-colors"
                                     >
-                                        Shorten URL
+                                         {loading?<Loading/>:'Shorten URL'}
                                     </button>
                                     
                                 </div>
@@ -162,10 +167,10 @@ export default function HomePage() {
                     <p className="text-sm text-gray-500 dark:text-gray-400">© 2024 URL Wizard. All rights reserved.</p>
                     <nav className="flex gap-4 sm:gap-6">
                         <a className="text-sm hover:text-purple-600 dark:hover:text-purple-400 transition-colors" href="#privacy">
-                            Privacy Spell
+                           
                         </a>
                         <a className="text-sm hover:text-purple-600 dark:hover:text-purple-400 transition-colors" href="#terms">
-                            Terms of Wizardry
+                           
                         </a>
                     </nav>
                 </div>
