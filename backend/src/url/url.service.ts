@@ -46,7 +46,7 @@ export class UrlService {
 
   async findUrlData(id: string): Promise<{ success: boolean; url?: string }> {
     const url = await this.urlModel.findOne({
-      shortUrl: `${process.env.BASE_URL}/url/${id}`,
+      shortUrl: `${process.env.BASE_URL}/${id}`,
     });
     if (url) {
       return { success: true, url: url?.url };
