@@ -24,10 +24,8 @@ let UrlService = class UrlService {
         this.JwtService = JwtService;
     }
     async genShortUrl() {
-        const timestamp = Date.now();
-        const random = Math.random().toString(36).substring(2, 10);
-        const shortUrl = (timestamp.toString(36).substring(4) + random).substring(0, 10);
-        return shortUrl;
+        const random = Math.random().toString(36).substring(2, 7);
+        return random.substring(0, 5);
     }
     async generateShortUrl(url, userId) {
         const shortUrl = await this.genShortUrl();
@@ -38,7 +36,7 @@ let UrlService = class UrlService {
         const newUrl = new this.urlModel({
             url: url,
             userId: userId,
-            shortUrl: `${process.env.BASE_URL}/url/${shortUrl}`,
+            shortUrl: `${process.env.BASE_URL}/${shortUrl}`,
         });
         await newUrl.save();
         return newUrl;

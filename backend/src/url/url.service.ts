@@ -19,15 +19,11 @@ export class UrlService {
     private readonly JwtService: JwtService,
   ) {}
 
-  async genShortUrl() {
-    const timestamp = Date.now(); // Current timestamp
-    const random = Math.random().toString(36).substring(2, 10); // Generate a 6-character random string
-    const shortUrl = (timestamp.toString(36).substring(4) + random).substring(
-      0,
-      10,
-    ); // Combine and limit to 8 chars
-    return shortUrl;
+  async genShortUrl(): Promise<string> {
+    const random = Math.random().toString(36).substring(2, 7); // Generate a random string of at least 5 characters
+    return random.substring(0, 5); // Ensure the result is exactly 5 characters
   }
+  
 
   async generateShortUrl(
     url: string,
@@ -42,7 +38,7 @@ export class UrlService {
     const newUrl = new this.urlModel({
       url: url,
       userId: userId,
-      shortUrl: `${process.env.BASE_URL}/url/${shortUrl}`,
+      shortUrl: `${process.env.BASE_URL}/${shortUrl}`,
     });
     await newUrl.save();
     return newUrl;

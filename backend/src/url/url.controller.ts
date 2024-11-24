@@ -6,7 +6,7 @@ export interface CustomRequest extends Request {
   userId: string;
 }
 
-@Controller('url')
+@Controller()
 export class UrlController {
   constructor(private urlService: UrlService) {}
 

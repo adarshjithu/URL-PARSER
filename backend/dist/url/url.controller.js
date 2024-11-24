@@ -71,7 +71,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UrlController.prototype, "deleteUrl", null);
 exports.UrlController = UrlController = __decorate([
-    (0, common_1.Controller)('url'),
+    (0, common_1.Controller)(),
     __metadata("design:paramtypes", [url_service_1.UrlService])
 ], UrlController);
 //# sourceMappingURL=url.controller.js.map
