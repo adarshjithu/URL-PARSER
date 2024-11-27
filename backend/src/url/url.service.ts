@@ -1,17 +1,11 @@
 import {
-  HttpCode,
-  HttpException,
-  HttpStatus,
   Injectable,
 } from '@nestjs/common';
 import { Url } from './url.schema';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
-
-import { v4 as uuidv4 } from 'uuid';
 import { JwtService } from '@nestjs/jwt';
 import { IUrl } from './Interface/IUrl';
-import { url } from 'inspector';
 @Injectable()
 export class UrlService {
   constructor(
@@ -20,8 +14,8 @@ export class UrlService {
   ) {}
 
   async genShortUrl(): Promise<string> {
-    const random = Math.random().toString(36).substring(2, 7); // Generate a random string of at least 5 characters
-    return random.substring(0, 5); // Ensure the result is exactly 5 characters
+    const random = Math.random().toString(36).substring(2, 7); 
+    return random.substring(0, 5); 
   }
   
 
@@ -29,6 +23,8 @@ export class UrlService {
     url: string,
     userId: string,
   ): Promise<Record<string, any>> {
+
+    
     const shortUrl = await this.genShortUrl();
 
     const isUrlExists = await this.urlModel.findOne({ url: url });
@@ -56,8 +52,9 @@ export class UrlService {
   }
 
   async findUrlsById(userId: string): Promise<Partial<IUrl>[]> {
-    console.log(userId)
-    const res = await this.urlModel.find({ userId });
+   
+    
+    const res = await this.urlModel.find({ userId:userId }).sort({_id:-1});
     return res;
   }
   async deleteUrlData(url: string) {

@@ -33,7 +33,6 @@ let UrlController = class UrlController {
         }
     }
     async getUserUrls(req) {
-        console.log(req.userId);
         return await this.urlService.findUrlsById(req.userId);
     }
     async deleteUrl(url) {
@@ -42,7 +41,7 @@ let UrlController = class UrlController {
 };
 exports.UrlController = UrlController;
 __decorate([
-    (0, common_1.Post)(),
+    (0, common_1.Post)('/api/url'),
     __param(0, (0, common_1.Body)()),
     __param(1, (0, common_1.Req)()),
     __metadata("design:type", Function),
@@ -58,14 +57,14 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UrlController.prototype, "getUrlById", null);
 __decorate([
-    (0, common_1.Get)(),
+    (0, common_1.Get)('/api/url'),
     __param(0, (0, common_1.Req)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], UrlController.prototype, "getUserUrls", null);
 __decorate([
-    (0, common_1.Delete)(),
+    (0, common_1.Delete)('/api/url'),
     __param(0, (0, common_1.Query)('url')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),

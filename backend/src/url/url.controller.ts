@@ -10,7 +10,7 @@ export interface CustomRequest extends Request {
 export class UrlController {
   constructor(private urlService: UrlService) {}
 
-  @Post()
+  @Post('/api/url')
   async generateShorUrl(@Body() urlData: UrlDto, @Req() req: CustomRequest) {
     return await this.urlService.generateShortUrl(urlData?.url, req.userId);
   }
@@ -26,12 +26,14 @@ export class UrlController {
   }
 
 
-  @Get()
+
+  @Get('/api/url')
   async getUserUrls(@Req() req: Request) {
-    console.log(req.userId)
+    
     return await this.urlService.findUrlsById(req.userId);
   }
-  @Delete()
+
+  @Delete('/api/url')
   async deleteUrl(@Query('url') url:string) {
      return await this.urlService.deleteUrlData(url)
   }

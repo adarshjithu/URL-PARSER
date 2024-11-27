@@ -10,9 +10,10 @@ exports.UrlMiddleware = void 0;
 const common_1 = require("@nestjs/common");
 const jwt = require("jsonwebtoken");
 let UrlMiddleware = class UrlMiddleware {
-    async use(req, Response, next) {
+    async use(req, res, next) {
         try {
-            if (req.originalUrl.split("/").length > 1) {
+            const arr = req.originalUrl.split("/");
+            if (arr.length == 2 || arr[1] == 'auth') {
                 return next();
             }
             const token = req.headers['authorization'];

@@ -53,8 +53,7 @@ let UrlService = class UrlService {
         }
     }
     async findUrlsById(userId) {
-        console.log(userId);
-        const res = await this.urlModel.find({ userId });
+        const res = await this.urlModel.find({ userId: userId }).sort({ _id: -1 });
         return res;
     }
     async deleteUrlData(url) {

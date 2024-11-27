@@ -59,25 +59,25 @@ export default function List() {
                 </a>
                 <nav className="ml-auto flex gap-4 sm:gap-6">
                     <h1 className=" cursor-pointer text-sm font-medium hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
-                        {user?.username[0].toUpperCase() + user?.username.slice(1)}
+                        {user?.username.toUpperCase()}
                     </h1>
                     <h1
                         onClick={() => navigate("/list")}
                         className="cursor-pointer text-sm font-medium hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
                     >
-                        My Short URLS
+                        MY SHORT URLS
                     </h1>
                     <a
                         className=" cursor-pointer text-sm font-medium hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
                         onClick={() => navigate("/")}
                     >
-                        Home
+                        HOME
                     </a>
                     <a
                         onClick={logout}
                         className=" cursor-pointer text-sm font-medium hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
                     >
-                        Logout
+                        LOGOUT
                     </a>
                 </nav>
             </header>
@@ -219,14 +219,9 @@ export default function List() {
 
             <footer className="py-4 sm:py-6 px-4 sm:px-6 border-t bg-white dark:bg-gray-800 shadow-inner">
                 <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between space-y-2 sm:space-y-0">
-                    <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">© 2024 URL Wizard. All rights reserved.</p>
+                    <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">adarshjithu10@gmail.com.</p>
                     <nav className="flex gap-4 sm:gap-6">
-                        <a className="text-xs sm:text-sm hover:text-purple-600 dark:hover:text-purple-400 transition-colors" href="#privacy">
-                            Privacy Spell
-                        </a>
-                        <a className="text-xs sm:text-sm hover:text-purple-600 dark:hover:text-purple-400 transition-colors" href="#terms">
-                            Terms of Wizardry
-                        </a>
+                        
                     </nav>
                 </div>
             </footer>

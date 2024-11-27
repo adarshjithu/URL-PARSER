@@ -71,7 +71,7 @@ export default function HomePage() {
                         {user?.username.toUpperCase()}
                     </h1>
                     <h1 onClick={()=>navigate('/list')} className="cursor-pointer text-sm font-lg hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
-                      MY URLS
+                      MY SHORT URLS
                     </h1>
                     <a className=" cursor-pointer text-sm font-medium hover:text-purple-600 dark:hover:text-purple-400 transition-colors" onClick={()=>navigate("/")}>HOME</a>
                     <a onClick={logout} className= " cursor-pointer text-sm font-lg hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
@@ -85,7 +85,7 @@ export default function HomePage() {
                         <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600">
                             URL Wizard
                         </h1>
-                        <p className="text-xl text-gray-600 dark:text-gray-300">Unravel the mystery of URLs with our magical parser!</p>
+                      
                     </div>
                     
                     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden border-2 border-purple-200 dark:border-purple-800">
@@ -164,7 +164,7 @@ export default function HomePage() {
             </main>
             <footer className="py-6 px-4 md:px-6 border-t bg-white dark:bg-gray-800 shadow-inner">
                 <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
-                    <p className="text-sm text-gray-500 dark:text-gray-400">© 2024 URL Wizard. All rights reserved.</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">adarshjithu10@gmail.com</p>
                     <nav className="flex gap-4 sm:gap-6">
                         <a className="text-sm hover:text-purple-600 dark:hover:text-purple-400 transition-colors" href="#privacy">
                            

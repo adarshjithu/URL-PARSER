@@ -5,6 +5,8 @@ import HomePage from "./Pages/Home";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import List from "./Pages/List";
+import InternalServerError from "./Components/InternalServerError";
+import PageNotFound from "./Components/PageNotFound";
 
 function App() {
     return (
@@ -16,6 +18,8 @@ function App() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<Signup />} />
                     <Route path="/list" element={<List />} />
+                    <Route path="/internal-server-error" element={<InternalServerError />} />
+                    <Route path="/page-not-found" element={<PageNotFound />} />
                 </Routes>
             </BrowserRouter>
         </div>

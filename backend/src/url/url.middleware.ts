@@ -8,13 +8,18 @@ import { NextFunction, Request, Response } from 'express';
 import * as jwt from 'jsonwebtoken';
 @Injectable()
 export class UrlMiddleware implements NestMiddleware {
-  async use(req: Request, Response: any, next: NextFunction) {
+  async use(req: Request, res: Response, next: NextFunction) {
     try {
+      const arr = req.originalUrl.split("/")
+
       
-      if (req.originalUrl.split("/").length>1) {
+      if (arr.length==2||arr[1]=='auth') {
         return next(); // Skip JWT verification and move to the route handler
-    }
+      }
+     
       const token = req.headers['authorization'];
+      
+
       
       const tokenIsValid = jwt.verify(token, process.env.JWT_SECRET);
       if (!tokenIsValid)
